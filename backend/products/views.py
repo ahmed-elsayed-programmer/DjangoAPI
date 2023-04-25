@@ -20,7 +20,7 @@ class ProductMixinView(mixins.ListModelMixin , mixins.RetrieveModelMixin, generi
 class ProductCreateApiView(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    authentication_classes = [authentication.SessionAuthentication]
+    authentication_classes = [authentication.SessionAuthentication , authentication.TokenAuthentication]
     permission_classes = [IsStaffEditorPermission]
 
     def perform_create(self, serializer:ProductSerializer):
